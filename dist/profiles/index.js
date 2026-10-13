@@ -4,5 +4,6 @@ window.PROFILE_FILES = [
   "kabir-khan.json",
   "ananya-das.json",
   "rohan-patel.json",
-  "sara-ahmed.json"
+  "sara-ahmed.json",
+  "rakshi.json"
 ];

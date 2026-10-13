@@ -1,0 +1,17 @@
+{
+  "id": "rakshi",
+  "name": "Rakshita N",
+  "course": "BCA",
+  "year": "1st year",
+  "bio": "BCA Student Exploring Coding,AI and Creative Content,Somewhere Between (hello world) and Big Dreams ",
+  "skills": [
+    "HTML",
+    "CSS",
+    "Canva Designing",
+    "Video Editing"
+
+  ],
+  "image": "images/rakshi.jpeg",
+  "tint": "#e2d9f3",
+  "story": "Somewhere Between (hello world) and Big Dreams"
+}
