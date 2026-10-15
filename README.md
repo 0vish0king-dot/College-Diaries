@@ -1,19 +1,14 @@
-# College-Diaries
-A beginner-friendly open-source website where students add their profiles, photos, skills, and college stories while learning GitHub collaboration and pull requests.
-
 # College Diaries 🎓
 
-College Diaries is a student-built website where students introduce themselves through profiles, photos, skills, and college stories.
-
-This project helps students practise HTML, CSS, JavaScript, Git, and GitHub collaboration.
+A beginner-friendly, student-built website where students share their profiles, photos, skills, and college stories while learning HTML, CSS, JavaScript, Git, and GitHub collaboration.
 
 ## Features
 
-- Student profiles with photos
-- Introductions, skills, and personal stories
+- Student profiles with photos, introductions, skills, and personal stories
 - Search by name, skill, or interest
 - Filter profiles by course
 - Responsive layout for mobile and desktop
+- Add a profile by editing HTML—no JSON or JavaScript edits needed
 
 ## Technologies
 
@@ -26,36 +21,17 @@ This project helps students practise HTML, CSS, JavaScript, Git, and GitHub coll
 
 ```text
 college-diaries/
-├── dist/
-│   ├── index.html
-│   ├── style.css
-│   ├── app.js
-│   ├── images/
-│   └── profiles/
-│       ├── index.js
-│       ├── template.json
-│       └── student-name.json
+├── index.html
+├── style.css
+├── app.js
+├── images/
 ├── README.md
 └── LICENSE
 ```
 
 ## Run Locally
 
-Install Python 3, then run this command from the project folder:
-
-```bash
-python3 -m http.server 8000 --directory dist
-```
-
-On Windows, you can use:
-
-```bash
-py -m http.server 8000 --directory dist
-```
-
-Open **http://localhost:8000** in your browser.
-
-Use a local server because the website loads profile files using JavaScript.
+Open `index.html` in your browser. The site does not need a server or any extra tools.
 
 ## How to Contribute
 
@@ -80,49 +56,40 @@ Replace `your-name` with your name:
 git switch -c profile/your-name
 ```
 
-### 4. Create Your Profile
-
-Copy `dist/profiles/template.json` and rename the copy:
-
-```text
-dist/profiles/your-name.json
-```
-
-Update it with your details:
-
-```json
-{
-  "id": "your-name",
-  "name": "Your Name",
-  "course": "MCA",
-  "year": "1st year",
-  "bio": "I enjoy learning programming and building websites.",
-  "skills": ["HTML", "CSS", "C"],
-  "image": "images/your-name.jpg",
-  "tint": "#e1e8d9",
-  "story": "Write about your interests, projects or favourite college memory."
-}
-```
-
-### 5. Add Your Photo
+### 4. Add Your Photo
 
 Save your photo at:
 
 ```text
-dist/images/your-name.jpg
+images/your-name.jpg
 ```
 
-The filename must match the image path in your profile.
+### 5. Add Your HTML Profile
 
-### 6. Register Your Profile
+Open `index.html`. Find `<div id="grid" class="grid">` and add your card inside it. Copy this example and replace the sample details with yours:
 
-Open `dist/profiles/index.js`.
+```html
+<article class="card" data-course="MCA">
+  <div class="portrait" style="--tint: #e1e8d9">
+    <img src="images/your-name.jpg" alt="Your Name profile image">
+    <span class="course">MCA</span>
+  </div>
+  <div class="card-body">
+    <h3>Your Name</h3>
+    <span class="year">1st year</span>
+    <p>A short introduction about you.</p>
+    <div class="tags"><span>HTML</span><span>CSS</span><span>Art</span></div>
+    <p class="story" hidden>Write about your interests, projects or favourite college memory.</p>
+    <div class="card-bottom"><span>A story in progress</span><button class="view">View diary ↗</button></div>
+  </div>
+</article>
+```
 
-Add `"your-name.json"` to the existing `window.PROFILE_FILES` array. Keep all existing filenames and separate entries with commas.
+Use the same course name in `data-course` and the course label. Available filters are `MCA`, `BCA`, and `BSc Data Science`. Add or remove skill tags by copying or deleting `<span>` elements. Keep the `story` paragraph and change its text to what you want people to read when they open your diary. You do not need to edit `app.js`.
 
-### 7. Test Your Changes
+### 6. Test Your Changes
 
-Run the website locally and check:
+Open `index.html` in your browser and check:
 
 - Your photo and profile appear correctly.
 - Your profile appears in search results.
@@ -130,15 +97,15 @@ Run the website locally and check:
 - Your diary opens.
 - The layout looks good on mobile.
 
-### 8. Commit and Push
+### 7. Commit and Push
 
 ```bash
-git add dist/profiles/your-name.json dist/profiles/index.js dist/images/your-name.jpg
+git add index.html images/your-name.jpg
 git commit -m "Add my student profile"
 git push -u origin profile/your-name
 ```
 
-### 9. Open a Pull Request
+### 8. Open a Pull Request
 
 On GitHub, click **Compare & pull request**.
 
@@ -156,8 +123,7 @@ To make corrections, update the same branch, commit, and push again. The existin
 ## Contribution Rules
 
 - Use one branch and one PR per task.
-- Edit your own profile and photo.
-- Preserve other students' entries in `profiles/index.js`.
+- Add your own HTML card and photo; do not remove or change another student's card.
 - Write meaningful commit messages.
 - Use only images you have permission to share.
 - Avoid sharing private contact details.
