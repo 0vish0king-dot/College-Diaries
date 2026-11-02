@@ -5,6 +5,7 @@ const search = document.querySelector('#search');
 const cards = [...grid.querySelectorAll('.card')];
 const quoteButton = document.querySelector('#quote-button');
 const quoteOutput = document.querySelector('#coding-quote');
+const shareStatus = document.querySelector('#share-status');
 const codingQuotes = [
   'It works on my machine is not a deployment strategy.',
   'Every expert was once a beginner who refused to give up.',
@@ -19,6 +20,17 @@ const codingQuotes = [
 ];
 let previousQuoteIndex = -1;
 let filter = 'All';
+let shareStatusTimer;
+
+const profileCounts = new Map();
+cards.forEach((card, index) => {
+  const name = card.querySelector('h3').textContent.trim();
+  const baseId = name.normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+    || `student-${index + 1}`;
+  const count = profileCounts.get(baseId) || 0;
+  profileCounts.set(baseId, count + 1);
+  card.dataset.profileId = count ? `${baseId}-${count + 1}` : baseId;
+});
 
 
 function render() {
@@ -49,8 +61,120 @@ function showProfile(card) {
   details.textContent = `${course} · ${year}`;
   const diary = document.createElement('p');
   diary.textContent = story;
-  content.append(heading, details, diary);
+  const actions = document.createElement('div');
+  actions.className = 'profile-actions';
+
+  const shareButton = document.createElement('button');
+  shareButton.type = 'button';
+  shareButton.className = 'profile-action share-native';
+  shareButton.textContent = 'Share profile';
+  shareButton.addEventListener('click', () => shareProfile(card));
+  actions.append(shareButton);
+
+  const copyButton = document.createElement('button');
+  copyButton.type = 'button';
+  copyButton.className = 'profile-action copy-profile-link';
+  copyButton.textContent = 'Copy link';
+  copyButton.addEventListener('click', () => copyProfileLink(profileUrl(card)));
+  actions.append(copyButton);
+
+  content.append(heading, details, diary, actions);
   modal.showModal();
+}
+
+function profileUrl(card) {
+  const url = new URL(window.location.href);
+  url.searchParams.set('profile', card.dataset.profileId);
+  url.hash = '';
+  return url.href;
+}
+
+function showShareStatus(message) {
+  shareStatus.textContent = message;
+  shareStatus.classList.add('visible');
+  window.clearTimeout(shareStatusTimer);
+  shareStatusTimer = window.setTimeout(() => {
+    shareStatus.classList.remove('visible');
+  }, 4000);
+}
+
+function legacyCopy(text) {
+  const input = document.createElement('textarea');
+  input.value = text;
+  input.setAttribute('readonly', '');
+  input.style.position = 'fixed';
+  input.style.left = '-9999px';
+  document.body.append(input);
+  input.select();
+
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  } finally {
+    input.remove();
+  }
+  return copied;
+}
+
+function showManualCopyLink(url) {
+  let input = content.querySelector('.copy-fallback input');
+  if (!input) {
+    const label = document.createElement('label');
+    label.className = 'copy-fallback';
+    label.textContent = 'Profile link';
+    input = document.createElement('input');
+    input.type = 'url';
+    input.readOnly = true;
+    input.setAttribute('aria-label', 'Profile link to copy');
+    label.append(input);
+    content.append(label);
+  }
+  input.value = url;
+  input.focus();
+  input.select();
+}
+
+async function copyProfileLink(url) {
+  let copied = false;
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(url);
+      copied = true;
+    } catch {
+      copied = legacyCopy(url);
+    }
+  } else {
+    copied = legacyCopy(url);
+  }
+
+  if (copied) {
+    showShareStatus('Profile link copied to clipboard.');
+  } else {
+    showManualCopyLink(url);
+    showShareStatus('Copy was blocked. Select and copy the profile link shown in the diary.');
+  }
+}
+
+async function shareProfile(card) {
+  const name = card.querySelector('h3').textContent.trim();
+  const url = profileUrl(card);
+  if (typeof navigator.share !== 'function') {
+    await copyProfileLink(url);
+    return;
+  }
+
+  try {
+    await navigator.share({
+      title: `${name} | College Diaries`,
+      text: `Read ${name}'s diary on College Diaries.`,
+      url
+    });
+  } catch (error) {
+    if (error && error.name === 'AbortError') return;
+    await copyProfileLink(url);
+  }
 }
 
 function showGuide() {
@@ -97,6 +221,12 @@ grid.addEventListener('click', event => {
 document.querySelector('#guide').addEventListener('click', showGuide);
 document.querySelector('#guide2').addEventListener('click', showGuide);
 document.querySelector('.close').addEventListener('click', () => modal.close());
+
+const requestedProfile = new URLSearchParams(window.location.search).get('profile');
+if (requestedProfile) {
+  const requestedCard = cards.find(card => card.dataset.profileId === requestedProfile);
+  if (requestedCard) showProfile(requestedCard);
+}
 
 /* College Diaries - dark mode toggle (upgraded)
    Add just before </body>:  <script src="theme-toggle.js"></script>

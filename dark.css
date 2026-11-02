@@ -235,6 +235,23 @@ html.dark-mode #theme-toggle {
   border-color: #3d3d44 !important;
   color: #ffd76a !important;
 }
+
+html.dark-mode .profile-actions .copy-profile-link {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .copy-fallback input {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .share-status {
+  background: var(--d-surface-2);
+  color: var(--d-text);
+}
 .course{
   color:#0e0e10
 }
