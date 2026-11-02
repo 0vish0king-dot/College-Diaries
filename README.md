@@ -5,6 +5,7 @@ A beginner-friendly, student-built website where students share their profiles, 
 ## Features
 
 - Student profiles with photos, introductions, skills, and personal stories
+- Share a diary with the browser's sharing menu or copy its profile link
 - Search by name, skill, or interest
 - Filter profiles by course
 - Responsive layout for mobile and desktop
@@ -95,6 +96,7 @@ Open `index.html` in your browser and check:
 - Your profile appears in search results.
 - The course filter works.
 - Your diary opens.
+- Sharing or copying the link opens your specific diary.
 - The layout looks good on mobile.
 
 ### 7. Commit and Push
