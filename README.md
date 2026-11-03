@@ -8,8 +8,10 @@ A beginner-friendly, student-built website where students share their profiles, 
 - Share a diary with the browser's sharing menu or copy its profile link
 - Search by name, skill, or interest
 - Filter profiles by course
+- Beginner-friendly project ideas with GitHub Discussions links
+- Completed project showcases with team credits and repository or demo links
 - Responsive layout for mobile and desktop
-- Add a profile by editing HTML—no JSON or JavaScript edits needed
+- Add a profile by editing HTML and add a project idea in `projects.js`
 
 ## Technologies
 
@@ -25,6 +27,7 @@ college-diaries/
 ├── index.html
 ├── style.css
 ├── app.js
+├── projects.js
 ├── images/
 ├── README.md
 └── LICENSE
@@ -35,6 +38,25 @@ college-diaries/
 Open `index.html` in your browser. The site does not need a server or any extra tools.
 
 ## How to Contribute
+
+### Add a Project Idea
+
+Open `projects.js` and add an entry to the `projectIdeas` array. Include a title, a short description, your name as the creator, skills teammates can practise, one of the three supported statuses, and the repository's GitHub Discussions URL:
+
+```js
+{
+  title: 'C Quiz Game',
+  description: 'Build a small quiz together. I can use help with questions and game logic.',
+  creator: 'Your Name',
+  skills: ['C', 'Problem solving'],
+  status: 'Looking for teammates',
+  discussionUrl: 'https://github.com/Devi-prasad-H/college-diaries/discussions'
+}
+```
+
+Every idea is marked **Beginners welcome**. Use `Looking for teammates`, `Building`, or `Completed` for the status. For a completed project, also add `teamCredits` (an array of names) and `projectUrl` (a demo or repository link); the showcase will display those instead of the interest link. Replace the sample discussion URL with the idea's specific discussion thread when one is available. Submit the data-file change through a pull request.
+
+The project data is a regular JavaScript file, so it works when opening `index.html` directly in a browser.
 
 ### 1. Fork the Repository
 

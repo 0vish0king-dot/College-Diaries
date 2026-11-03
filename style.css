@@ -172,6 +172,114 @@ p {
     border-top: 1px solid #dedfd5
 }
 
+.projects-section {
+    padding: 35px 26px 65px;
+    border-top: 1px solid #dedfd5
+}
+
+.projects-section .section-head {
+    margin-bottom: 20px
+}
+
+.projects-section .section-head p {
+    margin: 0 0 20px
+}
+
+.project-submit {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    border: 1px solid #283924;
+    border-radius: 30px;
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 700
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #e1e2d8;
+    border-radius: 12px
+}
+
+.project-card h3 {
+    margin: 18px 0 0;
+    font-size: 21px
+}
+
+.project-card p {
+    font-size: 13px
+}
+
+.project-card .project-creator {
+    margin: 0 0 12px;
+    color: #4c5546;
+    font-weight: 700
+}
+
+.project-status,
+.beginner-tag {
+    display: inline-flex;
+    border-radius: 20px;
+    padding: 7px 10px;
+    background: #eef1e6;
+    color: #35452d;
+    font-size: 11px;
+    font-weight: 700
+}
+
+.project-status.completed {
+    background: #e2eee5;
+    color: #245738
+}
+
+.beginner-tag {
+    background: #fff2d6;
+    color: #664710
+}
+
+.project-card h4 {
+    margin: 20px 0 9px;
+    font-size: 12px
+}
+
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px
+}
+
+.project-skills span {
+    padding: 6px 9px;
+    border-radius: 5px;
+    background: #f2f3ed;
+    color: #5b6752;
+    font-size: 10px
+}
+
+.project-card .project-credits {
+    margin-bottom: 10px
+}
+
+.project-link {
+    margin-top: auto;
+    padding-top: 22px;
+    color: #334b2b;
+    font-size: 12px;
+    font-weight: 700
+}
+
 .section-head {
     display: flex;
     align-items: end;
@@ -523,6 +631,10 @@ input:focus-visible {
         grid-template-columns: repeat(2, 1fr)
     }
 
+    .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+
     footer {
         flex-wrap: wrap;
         gap: 15px
@@ -591,8 +703,20 @@ input:focus-visible {
         padding: 30px 20px
     }
 
+    .projects-section {
+        padding: 30px 20px
+    }
+
     .grid {
         grid-template-columns: 1fr
+    }
+
+    .project-grid {
+        grid-template-columns: 1fr
+    }
+
+    .projects-section .section-head {
+        align-items: flex-start
     }
 
     h2 {
