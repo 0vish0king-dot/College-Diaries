@@ -399,6 +399,7 @@ h2 span {
     font-weight: 700
 }
 
+
 .card-body {
     padding: 22px
 }
@@ -606,6 +607,74 @@ button:focus-visible,
 input:focus-visible {
     outline: 3px solid #8caa58;
     outline-offset: 4px
+}
+
+body[data-theme="dark"] {
+    background: #191d19;
+    color: #edf0e8
+}
+
+body[data-theme="dark"] header,
+body[data-theme="dark"] #students,
+body[data-theme="dark"] footer {
+    border-color: #394139
+}
+
+body[data-theme="dark"] .eyebrow,
+body[data-theme="dark"] h1 em,
+body[data-theme="dark"] .scribble {
+    color: #b6ca8d
+}
+
+body[data-theme="dark"] p,
+body[data-theme="dark"] .demo,
+body[data-theme="dark"] .year {
+    color: #b5bdb0
+}
+
+body[data-theme="dark"] .search,
+body[data-theme="dark"] .card,
+body[data-theme="dark"] dialog {
+    background: #242a24;
+    color: #edf0e8;
+    border-color: #414a40
+}
+
+body[data-theme="dark"] .search input {
+    color: #edf0e8
+}
+
+body[data-theme="dark"] #filters button {
+    color: #edf0e8;
+    border-color: #51594d
+}
+
+body[data-theme="dark"] #filters .active {
+    background: #657e4f;
+    border-color: #657e4f
+}
+
+body[data-theme="dark"] .tags span,
+body[data-theme="dark"] .close {
+    background: #343d33;
+    color: #d5e0c3
+}
+
+body[data-theme="dark"] .card-bottom {
+    border-color: #394139;
+    color: #b5bdb0
+}
+
+body[data-theme="dark"] .view {
+    color: #c5d9a1
+}
+
+body[data-theme="dark"] .contribute {
+    background: #293329
+}
+
+body[data-theme="dark"] .theme-toggle-track {
+    background: #657e4f
 }
 
 @media(max-width:800px) {
