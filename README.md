@@ -10,6 +10,7 @@ A beginner-friendly, student-built website where students share their profiles, 
 - Filter profiles by course
 - Beginner-friendly project ideas with GitHub Discussions links
 - Completed project showcases with team credits and repository or demo links
+- An interactive C programming quiz with explanations and a score summary
 - Responsive layout for mobile and desktop
 - Add a profile by editing HTML and add a project idea in `projects.js`
 
@@ -28,6 +29,7 @@ college-diaries/
 ├── style.css
 ├── app.js
 ├── projects.js
+├── quiz-questions.js
 ├── images/
 ├── README.md
 └── LICENSE
@@ -57,6 +59,10 @@ Open `projects.js` and add an entry to the `projectIdeas` array. Include a title
 Every idea is marked **Beginners welcome**. Use `Looking for teammates`, `Building`, or `Completed` for the status. For a completed project, also add `teamCredits` (an array of names) and `projectUrl` (a demo or repository link); the showcase will display those instead of the interest link. Replace the sample discussion URL with the idea's specific discussion thread when one is available. Submit the data-file change through a pull request.
 
 The project data is a regular JavaScript file, so it works when opening `index.html` directly in a browser.
+
+### C Programming Quiz
+
+The quiz displays 30 questions one at a time, explains each answer after submission, and shows a final score with a retry option. To contribute or update quiz questions, edit the `cQuizQuestions` array in `quiz-questions.js`. Each question has a prompt, C code, four answer options, the zero-based index of the correct option, and an explanation.
 
 ### 1. Fork the Repository
 

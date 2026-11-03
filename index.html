@@ -19,7 +19,11 @@
     <nav>
       <a href="#students">The students</a>
       <a href="#projects">Project ideas</a>
+<<<<<<< HEAD
+      <a href="#c-quiz">C quiz</a>
+=======
       </button>
+>>>>>>> f86b3ac61dad6f0e466f925032c5cb9a61da779a
       <button id="guide">Contribute ↗</button>
       <button onclick="location.href='about.html'">About Us</button>
        
@@ -45,6 +49,23 @@
         <p id="coding-quote" aria-live="polite">Need a boost? Get a fresh coding quote.</p>
       </div>
       <button id="quote-button" type="button">Get a quote ✦</button>
+    </section>
+    <section id="c-quiz" class="quiz-section" aria-labelledby="quiz-title">
+      <div class="quiz-heading">
+        <div>
+          <div class="eyebrow">LEARN BY DOING</div>
+          <h2 id="quiz-title">C programming quiz<span> ✦</span></h2>
+          <p>Five quick questions to practise reading C code. Take your time and learn from each answer.</p>
+        </div>
+      </div>
+      <div class="quiz-panel">
+        <div class="quiz-progress-row">
+          <span id="quiz-progress-label">Question 1 of 5</span>
+          <span id="quiz-score">Score: 0</span>
+        </div>
+        <progress id="quiz-progress" value="1" max="5" aria-label="Quiz progress"></progress>
+        <div id="quiz-content" aria-live="polite"></div>
+      </div>
     </section>
     <section id="students">
       <div class="section-head">
@@ -458,6 +479,7 @@
     <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
   </dialog>
   <script src="projects.js"></script>
+  <script src="quiz-questions.js"></script>
   <script src="app.js"></script>
 
   

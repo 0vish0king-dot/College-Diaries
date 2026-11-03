@@ -252,6 +252,49 @@ html.dark-mode .share-status {
   background: var(--d-surface-2);
   color: var(--d-text);
 }
+
+html.dark-mode #c-quiz {
+  background: #1c1c1f !important;
+  border-color: var(--d-border) !important;
+}
+
+html.dark-mode .quiz-panel {
+  background: var(--d-surface);
+  border-color: var(--d-border);
+}
+
+html.dark-mode .quiz-code {
+  background: #151518;
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .quiz-option,
+html.dark-mode .quiz-feedback {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .quiz-option:has(input:checked) {
+  border-color: var(--d-accent);
+  background: #34302b;
+}
+
+html.dark-mode .quiz-option.correct {
+  border-color: #78a76e;
+  background: #233325;
+}
+
+html.dark-mode .quiz-option.incorrect {
+  border-color: #c87970;
+  background: #382624;
+}
+
+html.dark-mode .quiz-submit {
+  background: var(--d-accent);
+  color: #1a1a1a;
+}
 .course{
   color:#0e0e10
 }
