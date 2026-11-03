@@ -1,4 +1,5 @@
 const grid = document.querySelector('#grid');
+const projectGrid = document.querySelector('#project-grid');
 const modal = document.querySelector('#modal');
 const content = document.querySelector('#modal-content');
 const search = document.querySelector('#search');
@@ -21,6 +22,71 @@ const codingQuotes = [
 let previousQuoteIndex = -1;
 let filter = 'All';
 let shareStatusTimer;
+
+function renderProjects() {
+  for (const project of projectIdeas) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+
+    const status = document.createElement('span');
+    status.className = `project-status ${project.status === 'Completed' ? 'completed' : ''}`;
+    status.textContent = project.status;
+
+    const heading = document.createElement('h3');
+    heading.textContent = project.title;
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    const creator = document.createElement('p');
+    creator.className = 'project-creator';
+    creator.textContent = `Creator: ${project.creator}`;
+
+    const welcome = document.createElement('span');
+    welcome.className = 'beginner-tag';
+    welcome.textContent = 'Beginners welcome';
+
+    const skillsLabel = document.createElement('h4');
+    skillsLabel.textContent = 'Skills to practise';
+
+    const skills = document.createElement('div');
+    skills.className = 'project-skills';
+    for (const skill of project.skills) {
+      const tag = document.createElement('span');
+      tag.textContent = skill;
+      skills.append(tag);
+    }
+
+    card.append(status, heading, description, creator, welcome, skillsLabel, skills);
+
+    if (project.status === 'Completed' && project.teamCredits && project.projectUrl) {
+      const credits = document.createElement('p');
+      credits.className = 'project-credits';
+      credits.textContent = `Team credits: ${project.teamCredits.join(', ')}`;
+
+      const projectLink = document.createElement('a');
+      projectLink.className = 'project-link';
+      projectLink.href = project.projectUrl;
+      projectLink.target = '_blank';
+      projectLink.rel = 'noopener noreferrer';
+      projectLink.textContent = `${project.projectUrlLabel || 'View project'} ↗`;
+
+      card.append(credits, projectLink);
+    }
+
+    const discussionLink = document.createElement('a');
+    discussionLink.className = 'project-link';
+    discussionLink.href = project.discussionUrl;
+    discussionLink.target = '_blank';
+    discussionLink.rel = 'noopener noreferrer';
+    discussionLink.textContent = 'Express interest on GitHub Discussions ↗';
+    card.append(discussionLink);
+
+    projectGrid.append(card);
+  }
+}
+
+renderProjects();
 
 const profileCounts = new Map();
 cards.forEach((card, index) => {

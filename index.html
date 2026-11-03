@@ -18,6 +18,7 @@
     <a class="brand" href="#">College<span>Diaries.</span></a>
     <nav>
       <a href="#students">The students</a>
+      <a href="#projects">Project ideas</a>
       </button>
       <button id="guide">Contribute ↗</button>
       <button onclick="location.href='about.html'">About Us</button>
@@ -401,6 +402,18 @@
       </div>
       <p id="empty" hidden>No profiles found. Try a different search.</p>
     </section>
+    <section id="projects" class="projects-section">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">LEARN TOGETHER, BUILD TOGETHER</div>
+          <h2>Small ideas, shared wins<span> ✦</span></h2>
+          <p>Bring a beginner-friendly idea, find a teammate, and learn as you go.</p>
+        </div>
+        <a class="project-submit" href="https://github.com/Devi-prasad-H/college-diaries/blob/main/projects.js"
+          target="_blank" rel="noopener noreferrer">Add an idea ↗</a>
+      </div>
+      <div id="project-grid" class="project-grid" aria-live="polite"></div>
+    </section>
     <section class="contribute">
       <div>
         <div class="eyebrow">YOUR FIRST PULL REQUEST STARTS HERE</div>
@@ -420,6 +433,7 @@
     <div id="modal-content"></div>
     <p id="share-status" class="share-status" role="status" aria-live="polite"></p>
   </dialog>
+  <script src="projects.js"></script>
   <script src="app.js"></script>
 
   
