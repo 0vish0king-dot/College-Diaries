@@ -92,17 +92,17 @@ images/your-name.jpg
 Open `index.html`. Find `<div id="grid" class="grid">` and add your card inside it. Copy this example and replace the sample details with yours:
 
 ```html
-<article class="card" data-course="MCA">
+<article class="card" data-course="BCA">
   <div class="portrait" style="--tint: #e1e8d9">
-    <img src="images/your-name.jpg" alt="Your Name profile image">
-    <span class="course">MCA</span>
+    <img src="images/hemasri.jpg" alt="hemasri profile image">
+    <span class="course">BCA</span>
   </div>
   <div class="card-body">
-    <h3>Your Name</h3>
+    <h3>hemasri s</h3>
     <span class="year">1st year</span>
-    <p>A short introduction about you.</p>
-    <div class="tags"><span>HTML</span><span>CSS</span><span>Art</span></div>
-    <p class="story" hidden>Write about your interests, projects or favourite college memory.</p>
+    <p>i'm someone who loves exploring new ideas, turning curiosity into creativity, and learning by doing.</p>
+    <div class="tags"><span>HTML</span><span>CSS</span><span>c</span></div>
+    <p class="story" hidden>I enjoy exploring creative ideas,building small coding projects and making college memories while learning new things and growing in confidence.</p>
     <div class="card-bottom"><span>A story in progress</span><button class="view">View diary ↗</button></div>
   </div>
 </article>

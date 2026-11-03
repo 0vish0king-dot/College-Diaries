@@ -98,6 +98,7 @@ cards.forEach((card, index) => {
   card.dataset.profileId = count ? `${baseId}-${count + 1}` : baseId;
 });
 
+
 function render() {
   const query = search.value.toLowerCase().trim();
   let visibleCount = 0;
