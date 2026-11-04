@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C Programming Quiz — College Diaries</title>
+  <meta name="description" content="Practise reading C code with an interactive quiz.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark.css">
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+    </nav>
+  </header>
+  <main>
+    <section id="c-quiz" class="quiz-section" aria-labelledby="quiz-title">
+      <div class="quiz-heading">
+        <div>
+          <div class="eyebrow">LEARN BY DOING</div>
+          <h1 id="quiz-title">C programming quiz<span> ✦</span></h1>
+          <p>Practise reading C code. Take your time and learn from each answer.</p>
+        </div>
+      </div>
+      <div class="quiz-panel">
+        <div class="quiz-progress-row">
+          <span id="quiz-progress-label">Question 1</span>
+          <span id="quiz-score">Score: 0</span>
+        </div>
+        <progress id="quiz-progress" value="1" max="1" aria-label="Quiz progress"></progress>
+        <div id="quiz-content" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <p>Built by students. One pull request at a time.</p>
+    <span>HTML · CSS · JavaScript</span>
+  </footer>
+  <script src="quiz-questions.js"></script>
+  <script src="quiz.js"></script>
+  <script src="theme-toggle.js"></script>
+</body>
+
+</html>

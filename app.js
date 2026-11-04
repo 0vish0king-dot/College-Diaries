@@ -7,10 +7,6 @@ const cards = [...grid.querySelectorAll('.card')];
 const quoteButton = document.querySelector('#quote-button');
 const quoteOutput = document.querySelector('#coding-quote');
 const shareStatus = document.querySelector('#share-status');
-const quizContent = document.querySelector('#quiz-content');
-const quizProgressLabel = document.querySelector('#quiz-progress-label');
-const quizProgress = document.querySelector('#quiz-progress');
-const quizScore = document.querySelector('#quiz-score');
 const codingQuotes = [
   'It works on my machine is not a deployment strategy.',
   'Every expert was once a beginner who refused to give up.',
@@ -26,9 +22,6 @@ const codingQuotes = [
 let previousQuoteIndex = -1;
 let filter = 'All';
 let shareStatusTimer;
-let quizQuestionIndex = 0;
-let quizCorrectAnswers = 0;
-let quizSubmitted = false;
 
 function renderProjects() {
   for (const project of projectIdeas) {
@@ -93,138 +86,7 @@ function renderProjects() {
   }
 }
 
-function updateQuizProgress(label, value) {
-  quizProgressLabel.textContent = label;
-  quizProgress.value = value;
-  quizScore.textContent = `Score: ${quizCorrectAnswers}`;
-}
-
-function renderQuizQuestion() {
-  const question = window.cQuizQuestions[quizQuestionIndex];
-  quizSubmitted = false;
-  updateQuizProgress(`Question ${quizQuestionIndex + 1} of ${window.cQuizQuestions.length}`, quizQuestionIndex + 1);
-
-  const heading = document.createElement('h3');
-  heading.className = 'quiz-question';
-  heading.textContent = question.question;
-
-  const code = document.createElement('pre');
-  code.className = 'quiz-code';
-  const codeText = document.createElement('code');
-  codeText.textContent = question.code;
-  code.append(codeText);
-
-  const form = document.createElement('form');
-  form.className = 'quiz-form';
-  const options = document.createElement('fieldset');
-  options.className = 'quiz-options';
-  const legend = document.createElement('legend');
-  legend.textContent = 'Choose one answer';
-  options.append(legend);
-
-  question.options.forEach((option, index) => {
-    const label = document.createElement('label');
-    label.className = 'quiz-option';
-    const input = document.createElement('input');
-    input.type = 'radio';
-    input.name = 'answer';
-    input.value = String(index);
-    input.required = true;
-    const optionText = document.createElement('span');
-    optionText.textContent = option;
-    label.append(input, optionText);
-    options.append(label);
-  });
-
-  const submit = document.createElement('button');
-  submit.className = 'quiz-submit';
-  submit.type = 'submit';
-  submit.textContent = 'Submit answer';
-  submit.disabled = true;
-  form.append(options, submit);
-  quizContent.replaceChildren(heading, code, form);
-}
-
-function showQuizResults() {
-  const total = window.cQuizQuestions.length;
-  const message = quizCorrectAnswers === total
-    ? 'Perfect score! You have the basics down—keep it up!'
-    : quizCorrectAnswers >= Math.ceil(total * 0.6)
-      ? 'Great work! Keep practising and you will get even more confident.'
-      : 'Nice start! Every question is a chance to learn. Try again to improve your score.';
-
-  updateQuizProgress('Quiz complete', total);
-  const result = document.createElement('div');
-  result.className = 'quiz-result';
-  const heading = document.createElement('h3');
-  heading.textContent = `You scored ${quizCorrectAnswers} out of ${total}`;
-  const encouragement = document.createElement('p');
-  encouragement.textContent = message;
-  const retry = document.createElement('button');
-  retry.className = 'quiz-submit';
-  retry.type = 'button';
-  retry.textContent = 'Try Again';
-  retry.addEventListener('click', () => {
-    quizQuestionIndex = 0;
-    quizCorrectAnswers = 0;
-    renderQuizQuestion();
-  });
-  result.append(heading, encouragement, retry);
-  quizContent.replaceChildren(result);
-}
-
-quizContent.addEventListener('change', event => {
-  if (event.target.matches('input[name="answer"]')) {
-    quizContent.querySelector('button[type="submit"]').disabled = false;
-  }
-});
-
-quizContent.addEventListener('submit', event => {
-  if (!event.target.matches('.quiz-form')) return;
-  event.preventDefault();
-  if (quizSubmitted) return;
-
-  const question = window.cQuizQuestions[quizQuestionIndex];
-  const selectedValue = new FormData(event.target).get('answer');
-  if (selectedValue === null) return;
-  const selectedAnswer = Number(selectedValue);
-  if (!Number.isInteger(selectedAnswer)) return;
-  quizSubmitted = true;
-  event.target.querySelector('button[type="submit"]').disabled = true;
-  const isCorrect = selectedAnswer === question.correctAnswer;
-  if (isCorrect) quizCorrectAnswers++;
-  quizScore.textContent = `Score: ${quizCorrectAnswers}`;
-
-  for (const option of quizContent.querySelectorAll('.quiz-option')) {
-    const input = option.querySelector('input');
-    input.disabled = true;
-    if (Number(input.value) === question.correctAnswer) option.classList.add('correct');
-    if (input.checked && !isCorrect) option.classList.add('incorrect');
-  }
-
-  const feedback = document.createElement('div');
-  feedback.className = `quiz-feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-  feedback.setAttribute('role', 'status');
-  const answerStatus = document.createElement('strong');
-  answerStatus.textContent = isCorrect ? 'Correct!' : 'Not quite.';
-  const answerDetails = document.createElement('p');
-  answerDetails.textContent = `Correct answer: ${question.options[question.correctAnswer]}. ${question.explanation}`;
-  feedback.append(answerStatus, answerDetails);
-
-  const next = document.createElement('button');
-  next.className = 'quiz-submit';
-  next.type = 'button';
-  next.textContent = quizQuestionIndex === window.cQuizQuestions.length - 1 ? 'See my results' : 'Next question';
-  next.addEventListener('click', () => {
-    quizQuestionIndex++;
-    if (quizQuestionIndex === window.cQuizQuestions.length) showQuizResults();
-    else renderQuizQuestion();
-  });
-  quizContent.append(feedback, next);
-});
-
 renderProjects();
-renderQuizQuestion();
 
 const profileCounts = new Map();
 cards.forEach((card, index) => {
@@ -431,89 +293,3 @@ if (requestedProfile) {
   const requestedCard = cards.find(card => card.dataset.profileId === requestedProfile);
   if (requestedCard) showProfile(requestedCard);
 }
-
-/* College Diaries - dark mode toggle (upgraded)
-   Add just before </body>:  <script src="theme-toggle.js"></script>
-
-   What it does:
-   - Starts in the visitor's saved choice, else their device setting
-   - Toggles the class "dark-mode" on <html>
-   - Updates the button label + aria-pressed
-   - Remembers the choice between visits
-   - Follows device changes until the visitor picks manually
-   - Syncs across open tabs
-*/
-(function () {
-  "use strict";
-
-  var root = document.documentElement;
-  var KEY = "theme";
-  var CLASS = "dark-mode";
-  var media = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
-
-  function getSaved() {
-    try { return localStorage.getItem(KEY); } catch (e) { return null; }
-  }
-
-  function save(theme) {
-    try { localStorage.setItem(KEY, theme); } catch (e) {}
-  }
-
-  function initialTheme() {
-    return getSaved() || (media && media.matches ? "dark" : "light");
-  }
-
-  var button = document.getElementById("theme-toggle");
-
-  // No button in the HTML? Create a floating one.
-  if (!button) {
-    button = document.createElement("button");
-    button.id = "theme-toggle";
-    button.type = "button";
-    button.className = "floating";
-    document.body.appendChild(button);
-  }
-
-  function apply(theme) {
-    var isDark = theme === "dark";
-    root.classList.toggle(CLASS, isDark);
-
-    // Label shows what clicking will do
-    button.textContent = isDark ? "\u2600\uFE0F Light mode" : "\uD83C\uDF19 Dark mode";
-    button.setAttribute("aria-pressed", String(isDark));
-
-    // Mobile browser bar color (optional nicety)
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.name = "theme-color";
-      document.head.appendChild(meta);
-    }
-    meta.content = isDark ? "#121212" : "#ffffff";
-  }
-
-  apply(initialTheme());
-
-  button.addEventListener("click", function () {
-    var next = root.classList.contains(CLASS) ? "light" : "dark";
-    apply(next);
-    save(next);
-  });
-
-  // Follow the device only while the visitor hasn't chosen manually
-  if (media) {
-    var onSystemChange = function (e) {
-      if (!getSaved()) apply(e.matches ? "dark" : "light");
-    };
-    if (media.addEventListener) media.addEventListener("change", onSystemChange);
-    else if (media.addListener) media.addListener(onSystemChange); // older Safari
-  }
-
-  // Keep other open tabs of the site in sync
-  window.addEventListener("storage", function (e) {
-    if (e.key === KEY && e.newValue) apply(e.newValue);
-  });
-
-  // Turn on transitions after first paint so the page doesn't animate on load
-  requestAnimationFrame(function () { root.classList.add("theme-ready"); });
-})();

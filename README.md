@@ -26,10 +26,13 @@ A beginner-friendly, student-built website where students share their profiles, 
 ```text
 college-diaries/
 ├── index.html
+├── quiz.html
 ├── style.css
 ├── app.js
+├── quiz.js
 ├── projects.js
 ├── quiz-questions.js
+├── theme-toggle.js
 ├── images/
 ├── README.md
 └── LICENSE
@@ -37,7 +40,7 @@ college-diaries/
 
 ## Run Locally
 
-Open `index.html` in your browser. The site does not need a server or any extra tools.
+Open `index.html` in your browser. The C quiz opens separately in a new tab from the **C quiz** link. The site does not need a server or any extra tools.
 
 ## How to Contribute
 
@@ -62,7 +65,7 @@ The project data is a regular JavaScript file, so it works when opening `index.h
 
 ### C Programming Quiz
 
-The quiz displays 30 questions one at a time, explains each answer after submission, and shows a final score with a retry option. To contribute or update quiz questions, edit the `cQuizQuestions` array in `quiz-questions.js`. Each question has a prompt, C code, four answer options, the zero-based index of the correct option, and an explanation.
+The quiz is available on `quiz.html` and displays questions one at a time, explains each answer after submission, and shows a final score with a retry option. To contribute or update quiz questions, edit the `cQuizQuestions` array in `quiz-questions.js`. Each question has a prompt, C code, four answer options, the zero-based index of the correct option, and an explanation.
 
 ### 1. Fork the Repository
 
