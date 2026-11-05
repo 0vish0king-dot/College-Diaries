@@ -24,5 +24,13 @@ const projectIdeas = [
     teamCredits: ['Devi Prasad H', 'College Diaries student contributors'],
     projectUrl: 'https://github.com/Devi-prasad-H/college-diaries',
     projectUrlLabel: 'View repository'
+  },
+  {
+    title: 'Music Player',
+    description: 'Sync style music player . Pick a folder and it finds your songs, reads their tags and cover art, and plays them. No server, no uploads, no dependencies.',
+    creator: 'Suraj Das',
+    skills: ['HTML', 'CSS', 'JavaScript', 'github','vibe coding'],
+    status: 'Building',
+    discussionUrl: 'https://github.com/surajdas172345/Music-Player'
   }
 ];
