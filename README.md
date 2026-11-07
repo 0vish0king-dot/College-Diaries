@@ -11,8 +11,10 @@ A beginner-friendly, student-built website where students share their profiles, 
 - Beginner-friendly project ideas with GitHub Discussions links
 - Completed project showcases with team credits and repository or demo links
 - An interactive C programming quiz with explanations and a score summary
+- A five-round classmate guessing game with profile clues, answer feedback, and diary links
 - Responsive layout for mobile and desktop
-- Add a profile by editing HTML and add a project idea in `projects.js`
+- A live profile builder that generates safe, ready-to-paste student card HTML
+- Add a project idea in `projects.js`
 
 ## Technologies
 
@@ -26,12 +28,18 @@ A beginner-friendly, student-built website where students share their profiles, 
 ```text
 college-diaries/
 ├── index.html
+├── profile-builder.html
+├── profile-builder.css
+├── profile-builder.js
 ├── quiz.html
 ├── style.css
 ├── app.js
 ├── quiz.js
 ├── projects.js
 ├── quiz-questions.js
+├── classmate-game.html
+├── classmate-game.css
+├── classmate-game.js
 ├── theme-toggle.js
 ├── images/
 ├── README.md
@@ -40,9 +48,22 @@ college-diaries/
 
 ## Run Locally
 
-Open `index.html` in your browser. The C quiz opens separately in a new tab from the **C quiz** link. The site does not need a server or any extra tools.
+Open `index.html` in your browser. The C quiz and classmate game each have their own page linked from the homepage. The site does not need a server or any extra tools.
 
 ## How to Contribute
+
+### Build a Student Profile
+
+Open **Build a profile** from the homepage, fill in the required details, and use the live preview to check your card. A GitHub profile URL is optional, but when provided it must be a valid `https://github.com/username` URL. Select **Copy HTML** to copy a card that matches the website's existing profile structure.
+
+Before opening a pull request:
+
+1. Add your profile photo to `images/` (for example, `images/your-name.jpg`).
+2. Paste the generated card inside `<div id="grid" class="grid">` in `index.html` and change the image `src` to your photo's path.
+3. Open `index.html` and check that your card appears in search, matches its course filter, and opens the diary with **View diary**.
+4. Take a screenshot of your working profile and include it in your pull request.
+
+The builder escapes special characters in profile text so they remain text in the generated HTML, rather than becoming markup.
 
 ### Add a Project Idea
 

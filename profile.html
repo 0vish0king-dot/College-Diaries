@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Profile - College Diaries</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <main class="profile-page">
+    <h1>Create Your Profile</h1>
+    <p class="lead">Fill in the form, check the live preview, then copy the HTML card.</p>
+
+    <div class="profile-layout">
+      <form id="profileForm" novalidate>
+        <label for="name">Name *</label>
+        <input id="name" type="text" autocomplete="name">
+        <small class="error" id="nameError"></small>
+
+        <label for="course">Course *</label>
+        <input id="course" type="text" placeholder="BSc Data Science">
+        <small class="error" id="courseError"></small>
+
+        <label for="year">Year *</label>
+        <select id="year">
+          <option value="">Select year</option>
+          <option>1st year</option>
+          <option>2nd year</option>
+          <option>3rd year</option>
+          <option>4th year</option>
+        </select>
+        <small class="error" id="yearError"></small>
+
+        <label for="intro">Introduction *</label>
+        <textarea id="intro" rows="2" maxlength="160"></textarea>
+        <small class="error" id="introError"></small>
+
+        <label for="skills">Skills * (separate with commas)</label>
+        <input id="skills" type="text" placeholder="C, HTML, CSS">
+        <small class="error" id="skillsError"></small>
+
+        <label for="github">GitHub URL *</label>
+        <input id="github" type="url" placeholder="https://github.com/username">
+        <small class="error" id="githubError"></small>
+
+        <label for="story">Diary story *</label>
+        <textarea id="story" rows="5"></textarea>
+        <small class="error" id="storyError"></small>
+
+        <button type="button" id="copyBtn">Copy HTML</button>
+        <p id="copyStatus" role="status"></p>
+      </form>
+
+      <section>
+        <h2>Live preview</h2>
+        <div id="preview"></div>
+
+        <div class="instructions">
+          <h2>What to do next</h2>
+          <ol>
+            <li>Click Copy HTML.</li>
+            <li>Open index.html and paste the card inside the profiles section, after any existing card.</li>
+            <li>Add your profile photo to the images folder. The file name must match the one in the card, shown as images/yourname.jpeg.</li>
+            <li>Commit your changes and open a pull request.</li>
+          </ol>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script src="theme-toggle.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>

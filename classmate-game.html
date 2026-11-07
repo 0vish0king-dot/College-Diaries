@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guess a Classmate — College Diaries</title>
+  <meta name="description" content="Get to know your classmates through their interests, skills, and stories.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark.css">
+  <link rel="stylesheet" href="classmate-game.css">
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <button id="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+    </nav>
+  </header>
+  <main>
+    <section class="classmate-game" aria-labelledby="game-title">
+      <div class="game-heading">
+        <div class="eyebrow">A LITTLE CAMPUS CURIOSITY</div>
+        <h1 id="game-title">Guess the <em>classmate.</em></h1>
+        <p>Get to know the people behind the profiles. Read the clues, pick a name, and see who you discover.</p>
+      </div>
+      <div class="game-panel">
+        <div class="game-progress-row">
+          <span id="round-label">Round 1 of 5</span>
+          <span id="game-score">Score: 0</span>
+        </div>
+        <progress id="round-progress" value="1" max="5" aria-label="Game progress"></progress>
+        <div id="game-content" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <p>Built by students. One pull request at a time.</p>
+    <span>HTML · CSS · JavaScript</span>
+  </footer>
+  <script src="classmate-game.js"></script>
+  <script src="theme-toggle.js"></script>
+</body>
+
+</html>

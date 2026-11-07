@@ -1,0 +1,269 @@
+.builder-header {
+  max-width: 1180px;
+}
+
+.builder-header nav a {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #283924;
+  border-radius: 30px;
+  padding: 12px 20px;
+  white-space: nowrap;
+}
+
+.profile-builder {
+  padding: 34px 26px 70px;
+}
+
+.builder-intro {
+  padding: 16px 0 30px;
+}
+
+.builder-intro h1 {
+  margin: 14px 0;
+  font-size: clamp(40px, 6vw, 64px);
+}
+
+.builder-intro > p {
+  max-width: 650px;
+  margin: 0;
+}
+
+.builder-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: 28px;
+}
+
+.builder-form,
+.preview-panel {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #e1e2d8;
+  border-radius: 14px;
+  background: #fff;
+}
+
+.builder-form h2,
+.preview-panel h2 {
+  margin: 0 0 8px;
+}
+
+.builder-note {
+  margin: 0 0 20px;
+  font-size: 13px;
+}
+
+.builder-note span,
+.builder-field > span > span[aria-hidden="true"] {
+  color: #a33b2f;
+}
+
+.builder-field {
+  display: grid;
+  gap: 7px;
+  margin: 0 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.builder-field input,
+.builder-field select,
+.builder-field textarea {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #cfd3c8;
+  border-radius: 7px;
+  padding: 11px 12px;
+  background: #fff;
+  color: #202820;
+  font: inherit;
+  font-weight: 400;
+}
+
+.builder-field textarea {
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.builder-field input:focus,
+.builder-field select:focus,
+.builder-field textarea:focus {
+  outline: 2px solid #657e4f;
+  outline-offset: 2px;
+}
+
+.builder-field small,
+.builder-field .optional {
+  color: #72776d;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.builder-field .field-error {
+  color: #a33b2f;
+}
+
+.builder-copy {
+  border: 0;
+  border-radius: 30px;
+  padding: 13px 22px;
+  background: #283d29;
+  color: #fff;
+  font-weight: 700;
+}
+
+.builder-copy:focus-visible,
+.builder-header nav a:focus-visible {
+  outline: 2px solid #657e4f;
+  outline-offset: 3px;
+}
+
+.copy-status {
+  min-height: 1.5em;
+  margin: 10px 0;
+  font-size: 13px;
+}
+
+.code-field {
+  margin-top: 20px;
+}
+
+.code-field textarea {
+  min-height: 240px;
+  font: 12px/1.5 Consolas, "Courier New", monospace;
+}
+
+.preview-panel {
+  position: sticky;
+  top: 20px;
+}
+
+.preview-heading {
+  margin-bottom: 20px;
+}
+
+.preview-panel h2 {
+  margin-top: 8px;
+}
+
+#profile-preview.grid {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+#profile-preview .card {
+  min-width: 0;
+}
+
+#profile-preview .portrait {
+  display: grid;
+  place-items: center;
+}
+
+#profile-preview .portrait.photo-missing::after {
+  content: "Your photo will appear here";
+  color: #48533f;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#profile-preview .portrait img {
+  min-height: 0;
+}
+
+#profile-preview .card-body > .github {
+  margin-top: 14px;
+  padding: 7px;
+  font-size: 12px;
+}
+
+.paste-guide {
+  margin-top: 26px;
+  padding: 18px;
+  border: 1px solid #dedfd5;
+  border-radius: 10px;
+  background: #f5f6ef;
+}
+
+.paste-guide h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.paste-guide ol {
+  margin: 0;
+  padding-left: 20px;
+  color: #555d50;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.paste-guide li + li {
+  margin-top: 7px;
+}
+
+.paste-guide code {
+  overflow-wrap: anywhere;
+}
+
+html.dark-mode .builder-form,
+html.dark-mode .preview-panel {
+  background: var(--d-surface);
+  border-color: var(--d-border);
+}
+
+html.dark-mode .builder-field input,
+html.dark-mode .builder-field select,
+html.dark-mode .builder-field textarea {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .paste-guide {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+}
+
+html.dark-mode .paste-guide ol,
+html.dark-mode .builder-field small,
+html.dark-mode .builder-field .optional {
+  color: var(--d-muted);
+}
+
+html.dark-mode #profile-preview .portrait.photo-missing::after {
+  color: var(--d-text);
+}
+
+@media (max-width: 800px) {
+  .builder-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .profile-builder {
+    padding: 24px 20px 50px;
+  }
+
+  .builder-form,
+  .preview-panel {
+    padding: 18px;
+  }
+
+  .builder-header nav {
+    padding-bottom: 10px;
+  }
+
+  .builder-header nav a {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+}
