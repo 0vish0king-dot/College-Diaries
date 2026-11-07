@@ -58,6 +58,23 @@
           </select>
         </label>
 
+        <div class="builder-field photo-field">
+          <span>Profile photo <span aria-hidden="true">*</span></span>
+          <video id="cameraVideo" autoplay playsinline muted hidden></video>
+          <canvas id="photoCanvas" hidden></canvas>
+          <img id="photoPreview" alt="Your photo preview" hidden>
+
+          <div class="photo-actions">
+            <button type="button" id="startCameraBtn">Take photo</button>
+            <button type="button" id="captureBtn" hidden>Capture</button>
+            <button type="button" id="retakeBtn" hidden>Retake</button>
+            <label class="upload-btn" for="photoUpload">Upload instead</label>
+            <input id="photoUpload" type="file" accept="image/*" hidden>
+            <button type="button" id="downloadPhotoBtn" hidden>Download photo</button>
+          </div>
+          <small id="photoError" class="field-error" role="alert"></small>
+        </div>
+
         <label class="builder-field">
           <span>Introduction <span aria-hidden="true">*</span></span>
           <textarea name="introduction" rows="3" maxlength="300" required
@@ -84,7 +101,16 @@
             placeholder="Share a little more about your journey, interests, or college memories."></textarea>
         </label>
 
-        <button class="builder-copy" type="submit">Copy HTML</button>
+        <!-- Honeypot: hidden from people, bots tend to fill it in -->
+        <div class="hp-field" aria-hidden="true">
+          <label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label>
+        </div>
+
+        <div class="builder-actions">
+          <button class="builder-copy" type="button" id="submitProfileBtn">Submit profile</button>
+          <button class="builder-copy builder-copy-secondary" type="submit">Copy HTML instead</button>
+        </div>
+        <p id="submit-status" class="copy-status" role="status" aria-live="polite"></p>
         <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
         <label class="builder-field code-field" for="generated-html">
           <span>Generated card HTML</span>
@@ -104,8 +130,8 @@
         <aside class="paste-guide">
           <h3>Before you open your PR</h3>
           <ol>
-            <li>Save your profile photo in the <code>images/</code> folder, for example <code>images/your-name.jpg</code>.</li>
-            <li>In <code>index.html</code>, paste the copied card inside <code>&lt;div id="grid" class="grid"&gt;</code>. Change the image <code>src</code> to your photo's path.</li>
+            <li>Click <strong>Download photo</strong> and save the file in the <code>images/</code> folder, keeping the file name it gives you (for example <code>images/your-name.jpg</code>).</li>
+            <li>In <code>index.html</code>, paste the copied card inside <code>&lt;div id="grid" class="grid"&gt;</code>. The image <code>src</code> already points to your photo's file name.</li>
             <li>Open the site and check that search, your course filter, and <strong>View diary</strong> work. Take a screenshot and include it with your pull request.</li>
           </ol>
         </aside>
@@ -114,7 +140,9 @@
   </main>
 
   <script src="theme-toggle.js"></script>
+  <script src="photo.js"></script>
   <script src="profile-builder.js"></script>
+  <script src="submit.js"></script>
 </body>
 
 </html>

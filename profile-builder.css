@@ -237,6 +237,25 @@ html.dark-mode .builder-field .optional {
 html.dark-mode #profile-preview .portrait.photo-missing::after {
   color: var(--d-text);
 }
+/* Photo field */
+.photo-field { display: flex; flex-direction: column; gap: 10px; }
+.photo-field video,
+.photo-field img {
+  width: 200px; height: 200px; object-fit: cover;
+  border-radius: 50%; border: 2px solid currentColor;
+}
+.photo-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.upload-btn {
+  display: inline-block; padding: 8px 14px; cursor: pointer;
+  border: 1px solid currentColor; border-radius: 6px;
+}
+[hidden] { display: none !important; }
+
+/* Submit button, secondary button, status and honeypot */
+.builder-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.builder-copy-secondary { background: transparent; border: 1px solid currentColor; color: inherit; }
+.copy-status.is-error { color: #b3261e; }
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 @media (max-width: 800px) {
   .builder-layout {
