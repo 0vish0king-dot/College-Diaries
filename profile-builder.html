@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build your profile — College Diaries</title>
+  <meta name="description" content="Create and preview a College Diaries student profile card.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dark.css">
+  <link rel="stylesheet" href="profile-builder.css">
+</head>
+
+<body>
+  <header class="builder-header">
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <nav aria-label="Profile builder navigation">
+      <a href="index.html#students">Meet the students</a>
+      <a href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="profile-builder">
+    <section class="builder-intro">
+      <div class="eyebrow">YOUR FIRST PULL REQUEST STARTS HERE</div>
+      <h1>Build your <em>profile.</em></h1>
+      <p>Tell us a little about yourself, see your card update live, then copy the HTML into the project.</p>
+    </section>
+
+    <div class="builder-layout">
+      <form id="profile-form" class="builder-form" novalidate>
+        <h2>Your details</h2>
+        <p class="builder-note">Fields marked <span aria-hidden="true">*</span> are required.</p>
+
+        <label class="builder-field">
+          <span>Name <span aria-hidden="true">*</span></span>
+          <input name="name" autocomplete="name" maxlength="80" required>
+        </label>
+
+        <label class="builder-field">
+          <span>Course <span aria-hidden="true">*</span></span>
+          <select name="course" required>
+            <option value="">Choose your course</option>
+            <option value="MCA">MCA</option>
+            <option value="BCA">BCA</option>
+            <option value="BSc Data Science">BSc Data Science</option>
+          </select>
+        </label>
+
+        <label class="builder-field">
+          <span>Year <span aria-hidden="true">*</span></span>
+          <select name="year" required>
+            <option value="">Choose your year</option>
+            <option value="1st year">1st year</option>
+            <option value="2nd year">2nd year</option>
+            <option value="3rd year">3rd year</option>
+            <option value="4th year">4th year</option>
+          </select>
+        </label>
+
+        <label class="builder-field">
+          <span>Introduction <span aria-hidden="true">*</span></span>
+          <textarea name="introduction" rows="3" maxlength="300" required
+            placeholder="What are you curious about or learning?"></textarea>
+        </label>
+
+        <label class="builder-field">
+          <span>Skills <span aria-hidden="true">*</span></span>
+          <input name="skills" maxlength="200" required placeholder="HTML, CSS, Python">
+          <small>Separate skills with commas.</small>
+        </label>
+
+        <label class="builder-field">
+          <span>GitHub profile URL <span class="optional">(optional)</span></span>
+          <input name="github" type="url" autocomplete="url" inputmode="url"
+            placeholder="https://github.com/your-username" aria-describedby="github-error">
+          <small id="github-error" class="field-error" hidden>Enter a valid GitHub profile URL, like
+            https://github.com/your-username.</small>
+        </label>
+
+        <label class="builder-field">
+          <span>Diary story <span aria-hidden="true">*</span></span>
+          <textarea name="story" rows="5" maxlength="1200" required
+            placeholder="Share a little more about your journey, interests, or college memories."></textarea>
+        </label>
+
+        <button class="builder-copy" type="submit">Copy HTML</button>
+        <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+        <label class="builder-field code-field" for="generated-html">
+          <span>Generated card HTML</span>
+          <textarea id="generated-html" rows="14" readonly spellcheck="false"
+            aria-label="Generated profile card HTML"></textarea>
+        </label>
+      </form>
+
+      <section class="preview-panel" aria-labelledby="preview-heading">
+        <div class="preview-heading">
+          <div>
+            <div class="eyebrow">LIVE PREVIEW</div>
+            <h2 id="preview-heading">Your profile card</h2>
+          </div>
+        </div>
+        <div id="profile-preview" class="grid profile-preview" aria-live="polite"></div>
+        <aside class="paste-guide">
+          <h3>Before you open your PR</h3>
+          <ol>
+            <li>Save your profile photo in the <code>images/</code> folder, for example <code>images/your-name.jpg</code>.</li>
+            <li>In <code>index.html</code>, paste the copied card inside <code>&lt;div id="grid" class="grid"&gt;</code>. Change the image <code>src</code> to your photo's path.</li>
+            <li>Open the site and check that search, your course filter, and <strong>View diary</strong> work. Take a screenshot and include it with your pull request.</li>
+          </ol>
+        </aside>
+      </section>
+    </div>
+  </main>
+
+  <script src="theme-toggle.js"></script>
+  <script src="profile-builder.js"></script>
+</body>
+
+</html>
