@@ -295,6 +295,58 @@ html.dark-mode .quiz-submit {
   background: var(--d-accent);
   color: #1a1a1a;
 }
+
+html.dark-mode .classmate-game {
+  background: var(--d-surface);
+  border-color: var(--d-border);
+}
+
+html.dark-mode .game-panel {
+  background: var(--d-surface-2);
+  border-color: var(--d-border);
+}
+
+html.dark-mode .student-clues {
+  background: #202024;
+}
+
+html.dark-mode .student-clues dd {
+  color: var(--d-muted);
+}
+
+html.dark-mode .game-option,
+html.dark-mode .game-feedback {
+  background: var(--d-surface);
+  border-color: var(--d-border);
+  color: var(--d-text);
+}
+
+html.dark-mode .game-option:has(input:checked) {
+  background: #34302b;
+  border-color: var(--d-accent);
+}
+
+html.dark-mode .game-feedback.correct,
+html.dark-mode .game-option.correct {
+  background: #233325;
+  border-color: #78a76e;
+}
+
+html.dark-mode .game-feedback.incorrect,
+html.dark-mode .game-option.incorrect {
+  background: #382624;
+  border-color: #c87970;
+}
+
+html.dark-mode .game-button {
+  background: var(--d-accent);
+  color: #1a1a1a;
+}
+
+html.dark-mode .diary-link {
+  color: var(--d-link);
+}
+
 .course{
   color:#0e0e10
 }

@@ -11,6 +11,7 @@ A beginner-friendly, student-built website where students share their profiles, 
 - Beginner-friendly project ideas with GitHub Discussions links
 - Completed project showcases with team credits and repository or demo links
 - An interactive C programming quiz with explanations and a score summary
+- A five-round classmate guessing game with profile clues, answer feedback, and diary links
 - Responsive layout for mobile and desktop
 - A live profile builder that generates safe, ready-to-paste student card HTML
 - Add a project idea in `projects.js`
@@ -36,6 +37,9 @@ college-diaries/
 ├── quiz.js
 ├── projects.js
 ├── quiz-questions.js
+├── classmate-game.html
+├── classmate-game.css
+├── classmate-game.js
 ├── theme-toggle.js
 ├── images/
 ├── README.md
@@ -44,7 +48,7 @@ college-diaries/
 
 ## Run Locally
 
-Open `index.html` in your browser. The C quiz opens separately in a new tab from the **C quiz** link. The site does not need a server or any extra tools.
+Open `index.html` in your browser. The C quiz and classmate game each have their own page linked from the homepage. The site does not need a server or any extra tools.
 
 ## How to Contribute
 
