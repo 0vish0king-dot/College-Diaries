@@ -153,6 +153,7 @@ const gameScore = document.querySelector('#game-score');
 let rounds = [];
 let roundIndex = 0;
 let score = 0;
+let streak = 0;
 let answerSubmitted = false;
 
 function shuffle(items) {
@@ -184,6 +185,7 @@ function startGame() {
   rounds = shuffle(distinctProfiles).slice(0, totalRounds);
   roundIndex = 0;
   score = 0;
+  streak = 0;
   renderRound();
 }
 
@@ -192,7 +194,7 @@ function renderRound() {
   const student = rounds[roundIndex];
   roundLabel.textContent = `Round ${roundIndex + 1} of ${totalRounds}`;
   roundProgress.value = roundIndex + 1;
-  gameScore.textContent = `Score: ${score}`;
+  gameScore.textContent = `Score: ${score}|Streak: ${streak}`;
 
   const heading = document.createElement('h2');
   heading.className = 'game-question';
@@ -256,8 +258,8 @@ function submitAnswer(form) {
   answerSubmitted = true;
   const student = rounds[roundIndex];
   const correct = selected === student.profileId;
-  if (correct) score++;
-  gameScore.textContent = `Score: ${score}`;
+  if (correct){score++;streak++;}else{streak=0;}
+  gameScore.textContent = `Score: ${score}|Streak: ${streak}`;
 
   for (const option of gameContent.querySelectorAll('.game-option')) {
     const input = option.querySelector('input');
