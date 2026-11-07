@@ -31,6 +31,22 @@
           <option>3rd year</option>
           <option>4th year</option>
         </select>
+        <label>Profile photo *</label>
+<div class="photo-box">
+  <video id="cameraVideo" autoplay playsinline muted hidden></video>
+  <canvas id="photoCanvas" hidden></canvas>
+  <img id="photoPreview" alt="Your photo preview" hidden>
+
+  <div class="photo-actions">
+    <button type="button" id="startCameraBtn">Take photo</button>
+    <button type="button" id="captureBtn" hidden>Capture</button>
+    <button type="button" id="retakeBtn" hidden>Retake</button>
+    <label class="upload-btn" for="photoUpload">Upload instead</label>
+    <input id="photoUpload" type="file" accept="image/*" hidden>
+    <button type="button" id="downloadPhotoBtn" hidden>Download photo</button>
+  </div>
+</div>
+<small class="error" id="photoError"></small>
         <small class="error" id="yearError"></small>
 
         <label for="intro">Introduction *</label>
@@ -70,6 +86,7 @@
     </div>
   </main>
   <script src="theme-toggle.js"></script>
+  <script src="photo.js"></script>
   <script src="profile.js"></script>
 </body>
 </html>

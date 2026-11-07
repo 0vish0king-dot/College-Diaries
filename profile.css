@@ -53,6 +53,21 @@
   border: 1px solid #999;
   border-radius: 10px;
 }
+.photo-box { display: flex; flex-direction: column; gap: 10px; margin-bottom: 4px; }
+.photo-box video,
+.photo-box img {
+  width: 200px; height: 200px; object-fit: cover;
+  border-radius: 50%; border: 2px solid currentColor;
+}
+.photo-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.upload-btn {
+  display: inline-block; padding: 8px 14px; cursor: pointer;
+  border: 1px solid currentColor; border-radius: 6px;
+}
+.profile-photo {
+  width: 96px; height: 96px; object-fit: cover;
+  border-radius: 50%; display: block; margin-bottom: 10px;
+}
 
 @media (max-width: 768px) {
   .profile-layout {

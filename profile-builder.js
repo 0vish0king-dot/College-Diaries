@@ -7,7 +7,14 @@
   const githubError = document.querySelector("#github-error");
   const status = document.querySelector("#copy-status");
   const output = document.querySelector("#generated-html");
-  const photoPath = "images/your-name.jpg";
+
+  // Builds images/<name>.jpg from the Name field, e.g. "Kabir Khan" -> images/kabir-khan.jpg
+  function getPhotoPath(name) {
+    const slug = (name || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    return "images/" + (slug || "your-name") + ".jpg";
+  }
+  // photo.js uses this so the downloaded file name matches the card
+  window.getPhotoPath = getPhotoPath;
 
   function getProfile() {
     return {
@@ -82,12 +89,16 @@
     portrait.className = "portrait";
     portrait.style.setProperty("--tint", "#e1e8d9");
     const image = document.createElement("img");
-    image.src = photoPath;
+    // Use the captured/uploaded photo in the preview when there is one
+    const capturedPhoto = window.profilePhoto && window.profilePhoto.dataUrl;
+    image.src = capturedPhoto || getPhotoPath(profile.name);
     image.alt = profile.name ? `${profile.name} profile image` : "Profile photo preview";
-    image.addEventListener("error", () => {
-      image.hidden = true;
-      portrait.classList.add("photo-missing");
-    }, { once: true });
+    if (!capturedPhoto) {
+      image.addEventListener("error", () => {
+        image.hidden = true;
+        portrait.classList.add("photo-missing");
+      }, { once: true });
+    }
     portrait.append(image);
     appendText(portrait, "span", "course", profile.course || "Course");
 
@@ -138,7 +149,7 @@
 
     return `<article class="card" data-course="${escapeHtml(profile.course)}">
   <div class="portrait" style="--tint: #e1e8d9">
-    <img src="${photoPath}" alt="${escapeHtml(profile.name)} profile image">
+    <img src="${escapeHtml(getPhotoPath(profile.name))}" alt="${escapeHtml(profile.name)} profile image">
     <span class="course">${escapeHtml(profile.course)}</span>
   </div>
   <div class="card-body">
@@ -162,6 +173,8 @@ ${skills}
 
   form.addEventListener("input", updatePreview);
   form.addEventListener("change", updatePreview);
+  // Re-draw the card whenever a photo is taken, uploaded or retaken
+  document.addEventListener("photochange", updatePreview);
 
   form.addEventListener("submit", async event => {
     event.preventDefault();

@@ -16,7 +16,7 @@ function slugify(name) {
 }
 
 function isValidGithubUrl(url) {
-  return /^https:\/\/github\.com\/A-Za-z0-9(?:\/[A-Za-z0-9._-]+)?\/?$/.test(url);
+  return /^https:\/\/github\.com\/[A-Za-z0-9-]+(?:\/[A-Za-z0-9._-]+)?\/?$/.test(url);
 }
 
 function getValues() {
@@ -25,14 +25,21 @@ function getValues() {
   return v;
 }
 
-function buildCard(v) {
+function getPhotoData() {
+  return (window.profilePhoto && window.profilePhoto.dataUrl) || '';
+}
+
+// forPreview = true  -> uses the captured photo so it shows on screen
+// forPreview = false -> uses images/name.jpeg, which is what gets copied
+function buildCard(v, forPreview) {
   const name = escapeHTML(v.name || 'Your Name');
   const course = escapeHTML(v.course || 'Your Course');
   const year = escapeHTML(v.year || 'Year');
   const intro = escapeHTML(v.intro || 'Your introduction appears here.');
   const story = escapeHTML(v.story || 'Your diary story appears here.');
   const github = escapeHTML(v.github || '#');
-  const photo = 'images/' + slugify(v.name) + '.jpeg';
+  const filePath = 'images/' + slugify(v.name) + '.jpeg';
+  const photo = (forPreview && getPhotoData()) || filePath;
   const tags = v.skills
     .split(',')
     .map(s => s.trim())
@@ -60,7 +67,7 @@ function buildCard(v) {
 function renderPreview() {
   const v = getValues();
   const wrapper = document.createElement('div');
-  wrapper.innerHTML = buildCard(v);
+  wrapper.innerHTML = buildCard(v, true);
   const card = wrapper.firstElementChild;
   // The story is hidden on real cards, so show it in the preview
   const story = card.querySelector('.story');
@@ -90,6 +97,13 @@ function validate() {
   else if (!isValidGithubUrl(gh)) ghMsg = 'Use a link like https://github.com/username';
   el('githubError').textContent = ghMsg;
   if (ghMsg) ok = false;
+
+  if (!getPhotoData()) {
+    el('photoError').textContent = 'Please take or upload a photo.';
+    ok = false;
+  } else {
+    el('photoError').textContent = '';
+  }
   return ok;
 }
 
@@ -99,7 +113,7 @@ async function copyHTML() {
     status.textContent = 'Please fix the errors above first.';
     return;
   }
-  const html = buildCard(getValues());
+  const html = buildCard(getValues(), false);
   try {
     await navigator.clipboard.writeText(html);
     status.textContent = 'Copied! Now paste it into index.html.';
@@ -118,5 +132,6 @@ fields.forEach(f => {
   el(f).addEventListener('input', renderPreview);
   el(f).addEventListener('change', renderPreview);
 });
+document.addEventListener('photochange', renderPreview);
 el('copyBtn').addEventListener('click', copyHTML);
 renderPreview();
