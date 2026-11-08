@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Galaxy Fight</title>
+  <link rel="stylesheet" href="space-fight.css">
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">
+      <span
+        class="brand">College<span>Diaries.</span></span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <button id="theme" type="button">Dark mode</button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      
+      <h1>Galaxy <em>Fight.</em></h1>
+      <p>Shoot down the invaders, catch the glowing orbs, and see how high you can climb on the college leaderboard.</p>
+    </section>
+    <section class="play">
+      <div class="game">
+        <canvas id="g"></canvas>
+        <div id="ov">
+          <h2 id="ttl">Galaxy Fight</h2>
+          <p id="sub">Drag to move. Your ship fires by itself. Catch orbs for rapid ammo and triple shot.</p>
+          <p id="sc"></p>
+          <input id="nm" maxlength="16" placeholder="Your name" aria-label="Your name" autocomplete="off">
+          <button id="go">Start</button>
+        </div>
+      </div>
+      <div class="board">
+        <h2>Leaderboard</h2>
+        <p id="note"></p>
+        <ol id="lb"></ol>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a class="brand" href="index.html">College<span>Diaries.</span></a>
+    <p>Built by students. One pull request at a time.</p>
+    <span>HTML · CSS · JavaScript</span>
+  </footer>
+ 
+  
+</body>
+<script src="space-fight.js"></script>
+</html>
